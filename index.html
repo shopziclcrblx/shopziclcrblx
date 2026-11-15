@@ -1733,7 +1733,7 @@ html:not([data-theme="light"]) .th-btn:hover{border-color:#8b5cf6}
 <main class="wrap">
 <div class="zc-view" data-view="home">
 <div class="hb">
-<a class="hb-banner" href="#services" title="Xem dịch vụ cày thuê"><img id="bannerImg" src="" alt="Cày thuê – ShopZiCiCRBLX"></a>
+<div class="hb-banner hb-video" id="hbVideo"><div class="hv-box" id="hvBox"><img class="hv-thumb" src="https://i.ytimg.com/vi/L9oY5SS-sFQ/maxresdefault.jpg" alt="Cách tạo mã dự phòng khi đặt đơn trên shop" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/L9oY5SS-sFQ/hqdefault.jpg'"><button type="button" class="hv-play" onclick="hvPlay()" aria-label="Phát video"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button><a class="hv-yt" href="https://www.youtube.com/watch?v=L9oY5SS-sFQ" target="_blank" rel="noopener noreferrer">Mở trên YouTube ↗</a></div></div>
 <div class="hb-card" id="deposit">
 <div class="hb-tabs"><button class="tab-btn active" type="button" data-tab="tab-deposit" onclick="switchHeroTab('tab-deposit',this)">Nạp thẻ cào</button><button class="tab-btn" type="button" data-tab="tab-topnap" onclick="switchHeroTab('tab-topnap',this)">TOP nạp</button></div>
 <div id="tab-deposit" class="tab-pane active hb-pane">
@@ -2220,7 +2220,7 @@ function openWelcome(){document.body.classList.add('wl-lock');setTimeout(()=>doc
 document.addEventListener('click',e=>{if(!e.target.closest('#userBox'))closeMenu()});
 document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;closeMenu();closeAuth();closeDetail();closeCart();closeCheckout();closeOrders();closePay();closeEmailModal();closeWelcome()});
 window.addEventListener('storage',e=>{if(e.key===CART_KEY){updateCartBadge();renderCart()}});
-window.__bnDef=BANNER_IMG;(function(){try{const c=JSON.parse(localStorage.getItem('shop_banner_cache')||'null');if(c&&c.img)BANNER_IMG=c.img}catch(e){}})();if(typeof BANNER_IMG!=='undefined'&&BANNER_IMG)document.getElementById('bannerImg').src=BANNER_IMG;{const hb=document.getElementById('brandBanner');if(hb&&BANNER_IMG)hb.src=BANNER_IMG}openWelcome();bannerSync();
+window.__bnDef=BANNER_IMG;(function(){try{const c=JSON.parse(localStorage.getItem('shop_banner_cache')||'null');if(c&&c.img)BANNER_IMG=c.img}catch(e){}})();if(typeof BANNER_IMG!=='undefined'&&BANNER_IMG){const _b=document.getElementById('bannerImg');if(_b)_b.src=BANNER_IMG}{const hb=document.getElementById('brandBanner');if(hb&&BANNER_IMG)hb.src=BANNER_IMG}openWelcome();bannerSync();
 depCardRun=cardBind(()=>document.getElementById('cardType').value,'cardSerial','cardCode','errSerial','errCode');renderServices();renderDepositPicks();updateCartBadge();renderCart();loadManagedPrices();loadAccStock();loadCustomCatalog();loadServiceFields();updateUI();loadTopDeposits();(async()=>{if(accessToken)await loadProfile();if(typeof zcProfileReady==='function')zcProfileReady();else window.zcPendingReady=true;await checkIpBan();resumeTopup()})();
 </script>
 <script>
@@ -2768,5 +2768,18 @@ html:not([data-theme="light"]) footer .ft-logo{background:#1a1528!important}
 html:not([data-theme="light"]) .ft-bar{background:#0a0810!important;border-top:1px solid #2e2548!important}
 html:not([data-theme="light"]) .ft-bar,html:not([data-theme="light"]) .ft-bar *{color:#a49fbd!important}
 html:not([data-theme="light"]) .ft-bar b{color:#c4b5fd!important}
+
+.hb-video{padding:3px!important}
+.hb-video iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:17px;background:#000}
+
+.hv-box{position:relative;aspect-ratio:16/9;border-radius:17px;overflow:hidden;background:#000}
+.hv-thumb,.hv-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.hv-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:54px;border:0;border-radius:16px;background:#e11d48;cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 28px rgba(0,0,0,.45);transition:transform .15s}
+.hv-play:hover{transform:translate(-50%,-50%) scale(1.08)}
+.hv-play svg{width:30px;height:30px;fill:#fff}
+.hv-yt{position:absolute;right:10px;bottom:10px;z-index:3;padding:7px 12px;border-radius:999px;background:rgba(0,0,0,.72);color:#fff!important;font:700 13px/1 Inter,system-ui,sans-serif;text-decoration:none}
+.hv-yt:hover{background:#e11d48}
 </style>
+
+<script>function hvPlay(){var b=document.getElementById('hvBox');if(!b||b.querySelector('iframe'))return;var f=document.createElement('iframe');f.src='https://www.youtube.com/embed/L9oY5SS-sFQ?autoplay=1&rel=0&modestbranding=1';f.title='Cách tạo mã dự phòng khi đặt đơn trên shop';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';f.referrerPolicy='strict-origin-when-cross-origin';f.allowFullscreen=true;b.insertBefore(f,b.querySelector('.hv-yt'));var p=b.querySelector('.hv-play');if(p)p.remove()}</script>
 </body></html>
