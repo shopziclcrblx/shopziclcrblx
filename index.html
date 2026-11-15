@@ -1931,7 +1931,7 @@ html:not([data-theme="light"]) .th-btn:hover{border-color:#8b5cf6}
 <div class="actions">
 <button class="wallet" id="walletBox" style="display:none" onclick="openDepositArea()" title="Nạp thêm tiền"><span class="wallet-ico"><svg><use href="#i-wallet"/></svg></span><span><small>Số dư ví</small><b id="balance">0 đ</b></span></button>
 <a class="icon-btn act-hist" href="#lich-su-nap" title="Lịch sử nạp"><svg><use href="#i-hist"/></svg></a>
-<button class="th-btn mu-btn" id="muBtn" type="button" onclick="muToggle()" title="Tắt / bật nhạc nền" aria-label="Tắt / bật nhạc nền" aria-pressed="false"><svg class="mu-on"><use href="#i-vol"/></svg><svg class="mu-off"><use href="#i-mute"/></svg></button>
+
 <button class="icon-btn nt-bell" id="ntBell" type="button" onclick="ntOpen()" title="Tin nhắn từ admin" aria-label="Tin nhắn từ admin" style="display:none"><svg><use href="#i-bell"/></svg><span class="badge" id="ntCount"></span></button>
 <button id="authBtn" class="btn btn-cyan" style="display:none" onclick="openAuth('login')">Đăng nhập</button>
 <div class="user" id="userBox">
@@ -2187,7 +2187,7 @@ html:not([data-theme="light"]) .th-btn:hover{border-color:#8b5cf6}
 </ul>
 </div>
 </div>
-<div class="ft-bar"><div class="wrap ft-bar-in"><span>© 2026 <b>ShopZiCiCRBLX</b>. All rights reserved.</span><span>Nhạc nền: Lukrembo – Bread (<a href="https://freetouse.com" target="_blank" rel="noopener noreferrer" title="Nhạc miễn phí từ freetouse.com">freetouse.com</a>)</span></div></div>
+<div class="ft-bar"><div class="wrap ft-bar-in"><span>© 2026 <b>ShopZiCiCRBLX</b>. All rights reserved.</span></div></div>
 </footer>
 
 <div id="authModal" class="modal" onclick="if(event.target===this)closeAuth()"><div class="box"><button class="close" onclick="closeAuth()" aria-label="Đóng"><svg><use href="#i-x"/></svg></button><div class="box-pad">
@@ -2428,12 +2428,12 @@ async function loadTopDeposits(){const el=document.getElementById('top5');if(!el
 try{Object.defineProperty(window,'loadTopDeposits',{writable:false})}catch(e){}
 async function checkIpBan(){const call=tok=>fetch(SUPABASE_URL+'/rest/v1/rpc/shop_ip_status',{method:'POST',headers:{apikey:SUPABASE_KEY,Authorization:'Bearer '+tok,'Content-Type':'application/json'},body:'{}'});try{let r=await call(accessToken||SUPABASE_KEY);if(!r.ok&&accessToken)r=await call(SUPABASE_KEY);if(!r.ok)return;const d=await r.json();if(d&&d.banned)showIpBlock(d)}catch(e){console.warn('Không kiểm tra được IP:',e)}}
 function showIpBlock(d){const w=document.getElementById('welcomeModal');w.classList.remove('show','hide');document.getElementById('ipBlockReason').textContent=d.reason||'Vi phạm quy định của shop';document.getElementById('ipBlockUntil').textContent=d.until?new Date(d.until).toLocaleString('vi-VN'):'Vĩnh viễn';document.getElementById('ipBlockIp').textContent=d.ip||'—';document.getElementById('ipBlock').classList.add('show');document.body.classList.add('wl-lock');clearInterval(tpTimer)}
-const MU_SRC=encodeURI('Lukrembo - Bread (freetouse.com).mp3');let muAudio=null,muOn=true,muStarted=false,muFailed=false;
-try{muOn=localStorage.getItem('shop_music')!=='off'}catch(e){}
+const MU_SRC=encodeURI('Lukrembo - Bread (freetouse.com).mp3');let muAudio=null,muOn=false,muStarted=false,muFailed=false;
+
 function muPaint(){const b=document.getElementById('muBtn');if(!b)return;const playing=muOn&&muStarted&&!muFailed;b.classList.toggle('on',playing);b.classList.toggle('off',!playing);b.setAttribute('aria-pressed',playing?'true':'false');b.title=playing?'Tắt nhạc nền':'Bật nhạc nền'}
 function muGet(){if(!muAudio){muAudio=new Audio(MU_SRC);muAudio.loop=true;muAudio.volume=0.4;muAudio.preload='auto';muAudio.addEventListener('error',()=>{muFailed=true;muPaint()})}return muAudio}
 function muPlay(){const a=muGet();const p=a.play();muStarted=true;if(p&&p.catch)p.catch(()=>{muStarted=false;muPaint()});muPaint()}
-function muStart(){if(muOn&&!muStarted)muPlay()}
+function muStart(){}
 function muToggle(){muOn=!(muOn&&muStarted);try{localStorage.setItem('shop_music',muOn?'on':'off')}catch(e){}if(muOn){muFailed=false;muPlay()}else{if(muAudio)muAudio.pause();muStarted=false;muPaint()}}
 document.addEventListener('pointerdown',e=>{if(e.target.closest('#muBtn'))return;muStart()},{once:true,capture:true});
 document.addEventListener('visibilitychange',()=>{if(!muAudio)return;if(document.hidden)muAudio.pause();else if(muOn&&muStarted)muAudio.play().catch(()=>{})});
@@ -2944,5 +2944,27 @@ html:not([data-theme="light"]) body .rx-pm-ic{background:rgba(255,255,255,.1)!im
 html:not([data-theme="light"]) body .rx-pack *,html:not([data-theme="light"]) body .rx-notes *,html:not([data-theme="light"]) body .rx-pm *,html:not([data-theme="light"]) body .nt-warn *{color:#f1efff!important}
 html:not([data-theme="light"]) body .rx-pack b{color:#c4b5fd!important}
 html:not([data-theme="light"]) body .rx-top h1,html:not([data-theme="light"]) body .rx-top h1 *{color:#f1efff!important;-webkit-text-fill-color:#f1efff!important}
+
+html:not([data-theme="light"]) body #svPage .sv-step header{background:#1a1528!important;border-bottom:1px solid #2e2548!important}
+html:not([data-theme="light"]) body #svPage .sv-step header h2,html:not([data-theme="light"]) body #svPage .sv-step header *:not(.sv-num){color:#f1efff!important;-webkit-text-fill-color:#f1efff!important}
+html:not([data-theme="light"]) body #svPage .sv-num{background:#7c3aed!important;color:#fff!important}
+html:not([data-theme="light"]) body #svPage .sv-dd-menu,html:not([data-theme="light"]) body #svPage .sv-dd-list,html:not([data-theme="light"]) body #svPage [role=listbox],html:not([data-theme="light"]) body #svPage .sv-pick,html:not([data-theme="light"]) body #svPage .sv-pkg{background:#110e1c!important;border-color:#2e2548!important;color:#f1efff!important}
+html:not([data-theme="light"]) body #svPage .sv-dd-btn *,html:not([data-theme="light"]) body #svPage .field label,html:not([data-theme="light"]) body #svPage .input input,html:not([data-theme="light"]) body #svPage .note-input,html:not([data-theme="light"]) body #svPage .sv-sum *{color:#f1efff!important}
+html:not([data-theme="light"]) body #svPage .input{background:#110e1c!important}
+html:not([data-theme="light"]) body #svPage .input input{background:transparent!important}
+html:not([data-theme="light"]) body #svPage .sv-note{border-color:#8b5cf6!important}
+html:not([data-theme="light"]) body #svPage .sv-sum{background:#1a1528!important}
+html:not([data-theme="light"]) body #svPage button:not(.sv-dd-btn):not([class*=back]){border-color:#2e2548}
+html:not([data-theme="light"]) body .hb-tabs{background:linear-gradient(100deg,#4c1d95,#6d28d9 55%,#8b5cf6)!important}
+html:not([data-theme="light"]) body .hb-go{background:linear-gradient(100deg,#4c1d95,#7c3aed 55%,#a855f7)!important}
+html:not([data-theme="light"]) body .hb-card,html:not([data-theme="light"]) body .hb-card select,html:not([data-theme="light"]) body .hb-card input{background:#110e1c!important;border-color:#2e2548!important;color:#f1efff!important}
+html:not([data-theme="light"]) body .hb-card *:focus{border-color:#8b5cf6!important;box-shadow:0 0 0 3px rgba(139,92,246,.25)!important}
+html:not([data-theme="light"]) body .uc-ring{background:linear-gradient(135deg,#c4b5fd,#7c3aed)!important;box-shadow:0 0 0 3px rgba(139,92,246,.25)!important}
+html:not([data-theme="light"]) body .uchip{box-shadow:0 6px 18px -12px rgba(124,58,237,.6)!important}
+html:not([data-theme="light"]) body .uchip:hover{border-color:#8b5cf6!important;box-shadow:0 0 0 3px rgba(139,92,246,.2)!important}
+html:not([data-theme="light"]) body .uc-av circle:first-child{fill:#241a42}
+html:not([data-theme="light"]) body .uc-av path:nth-of-type(1){fill:#8b5cf6}
+html:not([data-theme="light"]) body .uc-av path:nth-of-type(2){fill:#241a42;stroke:#c4b5fd}
+html:not([data-theme="light"]) body #svPage .sv-hero h1{background-image:linear-gradient(90deg,#8b5cf6,#c4b5fd 60%,#a855f7)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
 </style>
 </body></html>
