@@ -1732,7 +1732,6 @@ html:not([data-theme="light"]) .th-btn:hover{border-color:#8b5cf6}
 </div>
 </header>
 
-<div id="pgLoad" aria-hidden="true"><div class="pg-bar"></div><div class="pg-box"><div class="pg-ring"></div><div class="pg-name">ShopZiCiCRBLX</div><div class="pg-sub">Đang tải trang...</div></div></div>
 <main class="wrap">
 <div class="zc-view" data-view="home">
 <div class="hb">
@@ -2319,13 +2318,7 @@ window.addEventListener('resize',zcFitNav);
 function zcProfileReady(){zcReady=true;zcUid=currentUser?currentUser.id:null;if(zcView==='don')donOpen(donCode);else if(zcView!=='home')zcRun(zcView)}
 function zcUserChanged(){if(!zcReady)return;const id=currentUser?currentUser.id:null;if(id===zcUid)return;zcUid=id;if(zcView==='don')donOpen(donCode);else if(zcView!=='home')zcRun(zcView)}
 document.addEventListener('click',e=>{const el=document.getElementById('zcNav');if(el&&!el.contains(e.target))el.querySelectorAll('.zc-nav-item.open').forEach(x=>x.classList.remove('open'))});
-let pgKey=(()=>{const h=decodeURIComponent(location.hash.slice(1));return(h.startsWith('dv/')||h.startsWith('don/'))?h:(ZC_VIEWS.includes(h)?h:'home')})(),pgTimer=null;
-function pgLoad(fn){const h=decodeURIComponent(location.hash.slice(1));const key=(h.startsWith('dv/')||h.startsWith('don/'))?h:(ZC_VIEWS.includes(h)?h:'home');
-if(key===pgKey){fn();return}pgKey=key;const el=document.getElementById('pgLoad');if(!el){fn();return}
-clearTimeout(pgTimer);el.classList.remove('out');el.classList.remove('run');void el.offsetWidth;el.classList.add('on','run');document.body.classList.add('pg-busy');
-fn();window.scrollTo(0,0);const ms=matchMedia('(prefers-reduced-motion:reduce)').matches?250:950;
-pgTimer=setTimeout(()=>{el.classList.add('out');setTimeout(()=>{el.classList.remove('on','run','out');document.body.classList.remove('pg-busy')},260)},ms)}
-addEventListener('hashchange',()=>pgLoad(zcRoute));
+addEventListener('hashchange',zcRoute);
 function renderNav(){
  const el=document.getElementById('zcNav');if(!el)return;
  const active=id=>id===(zcView==='dv'?'home':zcView);
@@ -2885,22 +2878,14 @@ html:not([data-theme="light"]) body .dep-warn{color:#fbbf24}
 html:not([data-theme="light"]) body .dep-warn{color:#fbbf24!important}
 html:not([data-theme="light"]) body #deposit p.dep-warn{color:#fbbf24!important}
 
-#pgLoad{position:fixed;inset:0;z-index:99998;display:none;align-items:center;justify-content:center;background:#fff;opacity:1;transition:opacity .25s ease}
-#pgLoad.on{display:flex}#pgLoad.out{opacity:0;pointer-events:none}
-#pgLoad .pg-bar{position:absolute;left:0;top:0;height:4px;width:0;background:linear-gradient(90deg,#dc2626,#fb923c,#fde047)}
-#pgLoad.run .pg-bar{animation:pgbar .95s cubic-bezier(.2,.7,.3,1) forwards}
-@keyframes pgbar{to{width:100%}}
-#pgLoad .pg-box{display:flex;flex-direction:column;align-items:center;gap:14px}
-#pgLoad .pg-ring{width:54px;height:54px;border-radius:50%;border:5px solid #fee2e2;border-top-color:#dc2626;animation:pgspin .75s linear infinite}
-@keyframes pgspin{to{transform:rotate(360deg)}}
-#pgLoad .pg-name{font:800 20px/1 Inter,system-ui,sans-serif;color:#b91c1c;letter-spacing:.4px}
-#pgLoad .pg-sub{font:600 13.5px/1 Inter,system-ui,sans-serif;color:#94a3b8}
-body.pg-busy{overflow:hidden}
-html:not([data-theme="light"]) #pgLoad{background:#0a0810}
-html:not([data-theme="light"]) #pgLoad .pg-bar{background:linear-gradient(90deg,#6d28d9,#a855f7,#c4b5fd)}
-html:not([data-theme="light"]) #pgLoad .pg-ring{border-color:#2a1f4a;border-top-color:#a855f7}
-html:not([data-theme="light"]) #pgLoad .pg-name{color:#c4b5fd}
-html:not([data-theme="light"]) #pgLoad .pg-sub{color:#a49fbd}
+
+html:not([data-theme="light"]) body .zc-input,html:not([data-theme="light"]) body .lg-f{background:#110e1c!important;border:1.5px solid #2e2548!important;border-radius:12px!important}
+html:not([data-theme="light"]) body .zc-input:focus-within,html:not([data-theme="light"]) body .lg-f:focus-within{border-color:#8b5cf6!important;box-shadow:0 0 0 3px rgba(139,92,246,.2)!important}
+html:not([data-theme="light"]) body .zc-input input,html:not([data-theme="light"]) body .lg-f input,html:not([data-theme="light"]) body #svPage .input input{background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;outline:0}
+html:not([data-theme="light"]) body .zc-input svg,html:not([data-theme="light"]) body .lg-f .lg-ic{background:transparent!important;color:#a78bfa!important;fill:currentColor}
+html:not([data-theme="light"]) body .zc-input svg *{fill:currentColor}
+html:not([data-theme="light"]) body .zc-input input:not([type=checkbox]):not([type=radio]),html:not([data-theme="light"]) body .lg-f input:not([type=checkbox]):not([type=radio]),html:not([data-theme="light"]) body #svPage .input input:not([type=checkbox]):not([type=radio]),html:not([data-theme="light"]) body .dep-sel+input:not([type=checkbox]):not([type=radio]){background:transparent!important;background-color:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important}
+html:not([data-theme="light"]) body .zc-card,html:not([data-theme="light"]) body .zc-stat{box-shadow:0 16px 40px -26px rgba(124,58,237,.55)!important;border-color:#2e2548!important}
 </style>
 
 <script>function hvPlay(){var b=document.getElementById('hvBox');if(!b||b.querySelector('iframe'))return;var f=document.createElement('iframe');f.src='https://www.youtube.com/embed/L9oY5SS-sFQ?autoplay=1&rel=0&modestbranding=1';f.title='Cách tạo mã dự phòng khi đặt đơn trên shop';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';f.referrerPolicy='strict-origin-when-cross-origin';f.allowFullscreen=true;b.insertBefore(f,b.querySelector('.hv-yt'));var p=b.querySelector('.hv-play');if(p)p.remove()}</script>
