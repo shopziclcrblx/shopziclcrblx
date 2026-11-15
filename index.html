@@ -1737,14 +1737,14 @@ html:not([data-theme="light"]) .th-btn:hover{border-color:#8b5cf6}
 <div class="hb">
 <div class="hb-banner hb-video" id="hbVideo"><div class="hv-box" id="hvBox"><img class="hv-thumb" src="https://i.ytimg.com/vi/L9oY5SS-sFQ/maxresdefault.jpg" alt="Cách tạo mã dự phòng khi đặt đơn trên shop" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/L9oY5SS-sFQ/hqdefault.jpg'"><button type="button" class="hv-play" onclick="hvPlay()" aria-label="Phát video"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button><a class="hv-yt" href="https://www.youtube.com/watch?v=L9oY5SS-sFQ" target="_blank" rel="noopener noreferrer">Mở trên YouTube ↗</a></div></div>
 <div class="hb-card" id="deposit">
-<div class="hb-tabs"><button class="tab-btn active" type="button" data-tab="tab-deposit" onclick="switchHeroTab('tab-deposit',this)">Nạp thẻ cào</button><button class="tab-btn" type="button" data-tab="tab-topnap" onclick="switchHeroTab('tab-topnap',this)">TOP nạp</button></div>
+<div class="hb-tabs"><button class="tab-btn active" type="button" data-tab="tab-deposit" onclick="switchHeroTab('tab-deposit',this)"><svg class="hb-ti" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3" fill="currentColor"/><rect x="2.5" y="9" width="19" height="2.4" fill="#fff" opacity=".55"/></svg>Nạp Thẻ</button><button class="tab-btn" type="button" data-tab="tab-topnap" onclick="switchHeroTab('tab-topnap',this)"><svg class="hb-ti" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 3h10v5a5 5 0 0 1-10 0V3Zm-3 1h2v3a3 3 0 0 1-2-3Zm16 0h-2v3a3 3 0 0 0 2-3ZM11 14h2v3h3v2H8v-2h3v-3Z"/></svg>Top Nạp</button></div>
 <div id="tab-deposit" class="tab-pane active hb-pane">
-<div class="dep-sel"><select id="cardType" onchange="depUpdate()" aria-label="Loại thẻ"><option value="">Chọn loại thẻ</option><option value="Viettel">Viettel</option><option value="Mobifone">Mobifone</option><option value="Vinaphone">Vinaphone</option><option value="Zing">Zing</option><option value="Garena">Garena</option><option value="Vcoin">Vcoin</option><option value="Scoin">Scoin</option></select></div>
-<div class="dep-sel"><select id="cardAmount" onchange="depUpdate()" aria-label="Mệnh giá"><option value="">Chọn mệnh giá</option><option value="20000">20.000 đ</option><option value="50000">50.000 đ</option><option value="100000">100.000 đ</option><option value="200000">200.000 đ</option><option value="500000">500.000 đ</option><option value="1000000">1.000.000 đ</option></select></div>
-<div><input class="dep-in" id="cardSerial" autocomplete="off" inputmode="numeric" placeholder="Serial" aria-label="Số serial"><p class="dep-err" id="errSerial"></p></div>
-<div><input class="dep-in" id="cardCode" autocomplete="off" inputmode="numeric" placeholder="Mã thẻ" aria-label="Mã thẻ"><p class="dep-err" id="errCode"></p></div>
+<div class="dep-two"><div><label class="dep-lb" for="cardType">Loại thẻ</label><div class="dep-sel"><select id="cardType" onchange="depUpdate()" aria-label="Loại thẻ"><option value="">Chọn</option><option value="Viettel">Viettel</option><option value="Mobifone">Mobifone</option><option value="Vinaphone">Vinaphone</option><option value="Zing">Zing</option><option value="Garena">Garena</option><option value="Vcoin">Vcoin</option><option value="Scoin">Scoin</option></select></div></div><div><label class="dep-lb" for="cardAmount">Mệnh giá</label><div class="dep-sel"><select id="cardAmount" onchange="depUpdate()" aria-label="Mệnh giá"><option value="">Chọn</option><option value="20000">20.000 đ</option><option value="50000">50.000 đ</option><option value="100000">100.000 đ</option><option value="200000">200.000 đ</option><option value="500000">500.000 đ</option><option value="1000000">1.000.000 đ</option></select></div></div></div>
+<div><label class="dep-lb" for="cardSerial">Số serial</label><input class="dep-in" id="cardSerial" autocomplete="off" inputmode="numeric" placeholder="Nhập số serial" aria-label="Số serial"><p class="dep-err" id="errSerial"></p></div>
+<div><label class="dep-lb" for="cardCode">Mã thẻ</label><input class="dep-in" id="cardCode" autocomplete="off" inputmode="numeric" placeholder="Nhập mã thẻ" aria-label="Mã thẻ"><p class="dep-err" id="errCode"></p></div>
 <div id="depositMsg"></div>
-<button class="hb-go" type="button" onclick="submitDeposit()">NẠP NGAY<small>Nhận <span id="depRecv">0đ</span></small></button>
+<p class="dep-warn">⚠ Chọn sai mệnh giá sẽ bị mất thẻ!</p>
+<button class="hb-go" type="button" onclick="submitDeposit()">👉 Gửi Để Nhận <span id="depRecv">0đ</span> 👈</button>
 </div>
 <div id="tab-topnap" class="tab-pane hb-pane"><div id="top5" class="top-list"><div class="top-list-empty">Đang tải...</div></div><button type="button" class="hb-go" onclick="openDepositArea()">NẠP TIỀN NGAY</button></div>
 </div>
@@ -2835,6 +2835,48 @@ html:not([data-theme="light"]) body .nt-bell svg{color:inherit!important;fill:cu
 html:not([data-theme="light"]) body .lg-or{color:#a49fbd}
 html:not([data-theme="light"]) body .lg-or:before,html:not([data-theme="light"]) body .lg-or:after{background:#2e2548}
 .lg-dc{margin-top:10px}
+
+/* ==== TOP nạp: khung bo tròn viền gradient ==== */
+body #top5.top-list{gap:10px!important;padding:4px 2px 6px!important}
+body #top5 .top-row{min-height:58px;padding:8px 16px 8px 12px;border:2.5px solid transparent!important;border-radius:16px;transition:transform .2s,box-shadow .2s}
+body #top5 .top-row:before{display:none!important}
+body #top5 .top-row:hover{transform:translateY(-2px)}
+body #top5 .top-name{font-size:16.5px;font-weight:800}
+body #top5 .top-amt{font-size:17px;font-weight:800}
+body #top5 .top-num{width:36px;height:36px;font-weight:800;margin:0}
+html[data-theme="light"] body #top5 .top-row{background:linear-gradient(#fff,#fff) padding-box,linear-gradient(120deg,#fca5a5,#ef4444 55%,#fb923c) border-box!important;box-shadow:0 8px 18px -14px rgba(220,38,38,.6)}
+html[data-theme="light"] body #top5 .top-row.r1{background:linear-gradient(90deg,#fffbeb,#fff 75%) padding-box,linear-gradient(120deg,#fcd34d,#f59e0b 55%,#fb923c) border-box!important}
+html[data-theme="light"] body #top5 .top-row.r2{background:linear-gradient(90deg,#f8fafc,#fff 75%) padding-box,linear-gradient(120deg,#e2e8f0,#94a3b8 55%,#cbd5e1) border-box!important}
+html[data-theme="light"] body #top5 .top-row.r3{background:linear-gradient(90deg,#fff7ed,#fff 75%) padding-box,linear-gradient(120deg,#fdba74,#ea580c 55%,#f59e0b) border-box!important}
+html[data-theme="light"] body #top5 .top-row:hover{box-shadow:0 12px 24px -14px rgba(220,38,38,.7)}
+html[data-theme="light"] body #top5 .top-name{color:#111827}
+html[data-theme="light"] body #top5 .top-amt{color:#dc2626!important}
+html[data-theme="light"] body #top5 .top-row.r1 .top-amt{color:#d97706!important}
+html[data-theme="light"] body #top5 .top-num{background:#fee2e2;color:#b91c1c}
+html:not([data-theme="light"]) body #top5 .top-row{background:linear-gradient(#110e1c,#110e1c) padding-box,linear-gradient(120deg,#6d28d9,#c4b5fd 55%,#a855f7) border-box!important;box-shadow:0 8px 18px -14px rgba(124,58,237,.7)}
+html:not([data-theme="light"]) body #top5 .top-row.r1{background:linear-gradient(90deg,#2a1d08,#110e1c 75%) padding-box,linear-gradient(120deg,#fcd34d,#f59e0b 55%,#fb923c) border-box!important}
+html:not([data-theme="light"]) body #top5 .top-row.r2{background:linear-gradient(90deg,#1f2230,#110e1c 75%) padding-box,linear-gradient(120deg,#e2e8f0,#94a3b8 55%,#cbd5e1) border-box!important}
+html:not([data-theme="light"]) body #top5 .top-row.r3{background:linear-gradient(90deg,#2a160b,#110e1c 75%) padding-box,linear-gradient(120deg,#fdba74,#ea580c 55%,#f59e0b) border-box!important}
+html:not([data-theme="light"]) body #top5 .top-name{color:#f1efff}
+html:not([data-theme="light"]) body #top5 .top-amt{color:#c4b5fd!important}
+html:not([data-theme="light"]) body #top5 .top-row.r1 .top-amt{color:#fbbf24!important}
+html:not([data-theme="light"]) body #top5 .top-num{background:#241a42;color:#c4b5fd}
+
+/* ==== Bảng Nạp thẻ giống mẫu ==== */
+.dep-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dep-lb{display:block;margin:0 0 6px;font-family:var(--display);font-size:14px;font-weight:800;color:#1f2937}
+.hb-tabs .tab-btn{display:flex;align-items:center;justify-content:center;gap:8px}
+.hb-ti{width:20px;height:20px;flex:none}
+.hb-tabs .tab-btn.active:after{left:22%!important;right:22%!important;bottom:6px!important;height:3px!important;background:#fde047!important}
+.hb .hb-pane.active{gap:14px}
+.dep-warn{margin:auto 0 0;text-align:center;color:#d97706;font-family:var(--display);font-size:14px;font-weight:800}
+.hb-go{margin-top:0!important;min-height:52px!important;font-size:16.5px!important;text-transform:none!important;letter-spacing:.3px!important}
+html:not([data-theme="light"]) body .dep-lb{color:#e9e5ff}
+html:not([data-theme="light"]) body .dep-warn{color:#fbbf24}
+@media(max-width:420px){.dep-two{grid-template-columns:1fr}}
+.hb-go{display:flex!important;flex-direction:row!important;align-items:center;justify-content:center;gap:6px!important;white-space:nowrap}
+html:not([data-theme="light"]) body .dep-warn{color:#fbbf24!important}
+html:not([data-theme="light"]) body #deposit p.dep-warn{color:#fbbf24!important}
 </style>
 
 <script>function hvPlay(){var b=document.getElementById('hvBox');if(!b||b.querySelector('iframe'))return;var f=document.createElement('iframe');f.src='https://www.youtube.com/embed/L9oY5SS-sFQ?autoplay=1&rel=0&modestbranding=1';f.title='Cách tạo mã dự phòng khi đặt đơn trên shop';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';f.referrerPolicy='strict-origin-when-cross-origin';f.allowFullscreen=true;b.insertBefore(f,b.querySelector('.hv-yt'));var p=b.querySelector('.hv-play');if(p)p.remove()}</script>
