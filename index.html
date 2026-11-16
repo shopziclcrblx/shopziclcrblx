@@ -2886,6 +2886,37 @@ html:not([data-theme="light"]) body .zc-input svg,html:not([data-theme="light"])
 html:not([data-theme="light"]) body .zc-input svg *{fill:currentColor}
 html:not([data-theme="light"]) body .zc-input input:not([type=checkbox]):not([type=radio]),html:not([data-theme="light"]) body .lg-f input:not([type=checkbox]):not([type=radio]),html:not([data-theme="light"]) body #svPage .input input:not([type=checkbox]):not([type=radio]),html:not([data-theme="light"]) body .dep-sel+input:not([type=checkbox]):not([type=radio]){background:transparent!important;background-color:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important}
 html:not([data-theme="light"]) body .zc-card,html:not([data-theme="light"]) body .zc-stat{box-shadow:0 16px 40px -26px rgba(124,58,237,.55)!important;border-color:#2e2548!important}
+
+/* ==== Bố cục trang chủ: video dài hơn, bảng nạp thẻ nhỏ + bo vuông ==== */
+@media(min-width:981px){.hb{grid-template-columns:minmax(0,2.15fr) minmax(0,1fr)!important;gap:20px!important;align-items:stretch!important}}
+.hb-banner{border-radius:10px!important;padding:2px!important}
+.hv-box,.hv-thumb,.hb-video iframe{border-radius:8px!important}
+.hb-card{border-radius:8px!important;min-height:0!important}
+.hb-tabs .tab-btn{height:44px!important;font-size:14px!important}
+.hb .hb-pane.active{padding:12px 14px 14px!important;gap:9px!important}
+.hb .dep-lb{font-size:13px;margin:0 0 4px}
+.dep-sel select,.hb .dep-in{height:40px!important;border-radius:6px!important;font-size:14px!important;padding-left:12px!important}
+.dep-two{gap:10px!important}
+.dep-warn{font-size:13px!important;margin-top:2px!important}
+.hb-go{min-height:44px!important;border-radius:6px!important;font-size:15px!important}
+.hb .dep-err{margin-top:3px;font-size:12px}
+@media(min-width:981px){.hv-box{aspect-ratio:2.1/1!important}.dep-warn{margin-top:auto!important}.hb-go{margin-top:6px!important}}
+
+/* ==== Thông tin đơn: to hơn + bo vuông ==== */
+#donPage{max-width:1240px!important}
+#donPage .don-grid{gap:20px!important}
+#donPage .don-card{border-radius:6px!important;padding:34px 36px 32px!important}
+#donPage .don-card h2{font-size:27px!important;margin:0 0 24px!important}
+#donPage .don-f{margin:0 0 20px!important}
+#donPage .don-f label{font-size:18px!important;margin:0 0 10px!important}
+#donPage .don-v{min-height:54px!important;border-radius:4px!important}
+#donPage .don-v span{font-size:18.5px!important;padding:0 16px!important}
+#donPage .don-v button{width:52px!important;border-radius:0!important}
+#donPage .don-v.area{min-height:92px!important}
+#donPage .don-v.area span{font-size:17px!important}
+#donPage .don-st{font-size:22px!important}
+#donPage .don-back a{height:56px!important;min-width:180px!important;font-size:20px!important;border-radius:6px!important}
+
 </style>
 
 <script>function hvPlay(){var b=document.getElementById('hvBox');if(!b||b.querySelector('iframe'))return;var f=document.createElement('iframe');f.src='https://www.youtube.com/embed/L9oY5SS-sFQ?autoplay=1&rel=0&modestbranding=1';f.title='Cách tạo mã dự phòng khi đặt đơn trên shop';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';f.referrerPolicy='strict-origin-when-cross-origin';f.allowFullscreen=true;b.insertBefore(f,b.querySelector('.hv-yt'));var p=b.querySelector('.hv-play');if(p)p.remove()}</script>
